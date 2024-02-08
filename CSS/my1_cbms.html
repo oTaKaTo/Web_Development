@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SW Studio Today</title>
+</head>
+<style>
+    h1,footer{
+        text-align: center;
+        background-color: rgb(255, 221, 0);
+        color:blue;
+    }
+    h2{
+        text-align: center;
+        color:rgb(249, 170, 255)
+    }
+    .profile-container{
+        width: 200px;
+        height: 200px;
+        border:  solid ;
+        border-color: rgb(34, 107, 176);
+        
+    }
+    .profile-container img{
+        width: 100%;
+    }
+    .progress{
+        display: flex;
+    }
+    .progressbar{
+        border: 2px;
+        width: 20px;
+        height: 1rem;
+        
+        background-color: aqua;
+    }
+</style>
+<body>
+    <h1>SW Studio Today</h1>
+    <h2>The record of the CSS class</h2>
+    <div class="profile-container">
+        <img src="profile.jpg"></img>
+    </div>
+    <div class="record-container">
+        <p>Reported by <br>
+            Mr.Takdanai Deephuak <br>
+            Tak <br>
+            ID 65010373 <br>
+        </p>
+        
+        
+    </div>
+    <div class="date-container">
+        <p id="date"></p>
+    </div>
+    <h3>Introduction</h3>
+    <p>describe your background about CSS e.g.</p>
+
+    <ul>
+        <li>do you know CSS?</li>
+        <li>Have you ever been using CSS?</li>
+        <li>Have you ever work with CSS before?</li>
+        <li>Have you any idea how CSS works?</li>
+        <li>What are you expecting from CSS?</li>
+        <li>etc.</li>
+    </ul>
+    <h3>The expectation</h3>
+    <p>Describe your expectation for today's class</p>
+    <p>You can list it like this:</p>
+    <ol>
+        <li>expect #1</li>
+        <li>expect #2</li>
+        <li>expect #3</li>
+    </ol>
+    <i>your quote of today's class</i>
+    <div class="progress">
+        <p>Progress of today's class</p>
+        <div class="progressbar">ds</div>
+    </div>
+    
+    <p>register for lucky draw</p>
+    <fieldset>
+        <form>
+            <label for="name">Name:*</label>
+            <input type="text" id="name" placeholder="John Smith"></input>
+            <br>
+            <label for="email">email:*</label>
+            <input type="email" id="email" placeholder="abc@def.com"></input>
+            <br>
+            <label for="tel">Tel:*</label>
+            <input type="tel" id="tel" placeholder="0xx-xxxxxxx"></input>
+            <br>
+            <input type="submit"></input>
+        </form>
+    </fieldset>
+    <footer>ce.kmit all rights reserved & copyright 2020</footer>
+    <script>
+        var currentDate = new Date();
+        var options = { year: 'numeric', month: 'short', day: 'numeric' };
+        document.getElementById("date").innerText = currentDate.toLocaleDateString('en-US', options);
+    </script>
+</body>
+</html>

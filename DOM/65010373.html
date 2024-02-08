@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head></head>
+
+<body>
+    <div id="maincontainer"></div>
+    <script>
+        var main_container = document.getElementById("maincontainer");
+
+
+        // h1 tag
+        let header_1 = document.createElement("h2");
+        let header_1_text = document.createTextNode("Exercise 04: JavaScript&DOM");
+        header_1.appendChild(header_1_text);
+        main_container.appendChild(header_1);
+
+        
+        const w = new Worker("color_rotate.js");
+        
+        function click_button(event) {
+            w.postMessage("start");
+        }
+        function click_personal(event){
+            if (isShow){
+                personal_ul.style.display = "none";
+                isShow = false;
+            }
+            else{
+                personal_ul.style.removeProperty("display");
+                isShow = true;
+            }   
+        }
+
+        function load_fireworks(event){
+            img_container.setAttribute("src","https://static.foxbusiness.com/foxbusiness.com/content/uploads/2021/06/Fireworks-iStock.jpg")
+        }
+
+        function load_crest(event){
+            img_container.setAttribute("src","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDFCsgo4kC2WDbQuIicupp3SpAs9SjqyUsg&usqp=CAU")
+        }
+
+        function load_action(event){
+            img_container.setAttribute("src","https://variety.com/wp-content/uploads/2023/06/MSDCOMM_FE001.jpg?w=800")
+        }
+
+        function load_buffalo(event){
+            img_container.setAttribute("src","https://i.natgeofe.com/n/de7be89d-3715-4e89-b83b-ab697ef781b8/thumbnail-cape-buffalo-nationalgeographic_1976203_16x9.jpg")
+        }
+
+
+        // button tag
+        w.onmessage = function (message) {
+            if (message.data == "end") {
+                date_button.style.position = "static"
+            }
+            else {
+                color = message.data[0];
+                bg_color = message.data[1];
+                time = message.data[2];
+                date_button.innerText = time;
+                date_button.style.color = color;
+                date_button.style.backgroundColor = bg_color;
+                date_button.style.position = "fixed"
+                date_button.style.top = "0px";
+                date_button.style.right = "0px";
+            }
+
+        }
+        let date_button_container = document.createElement("div");
+        let date_button = document.createElement("button");
+        let date_button_text = document.createTextNode("Click me to display Date and Time");
+        date_button.appendChild(date_button_text);
+        date_button_container.appendChild(date_button);
+        
+        date_button_container.style.height = "38px";
+        date_button.setAttribute("onclick", "click_button()");
+        date_button.style.display = "block";
+        
+        main_container.appendChild(date_button_container);
+
+
+        let personal_info_container = document.createElement("div");
+        let personal_info_text_container = document.createElement("a");
+        personal_info_text_container.style.marginBlockEnd = "1em";
+        personal_info_text_container.style.marginBlockStart = "1em";
+        personal_info_text_container.setAttribute("href","#");
+
+        
+        let personal_info_text = document.createTextNode("Personal Info");
+        personal_info_text_container.appendChild(personal_info_text);
+        personal_info_container.appendChild(personal_info_text_container);
+        let personal_ul = document.createElement("ul");
+
+        let personal_li_1 = document.createElement("li");
+        let personal_li_1_text = document.createTextNode("ทักษ์ดนัย ดีเผือก, ID: 65010373");
+        personal_li_1.appendChild(personal_li_1_text);
+
+        let personal_li_2 = document.createElement("li");
+        let personal_li_2_text = document.createTextNode("Subject: WEB APPLICATION DEVELOPMENT");
+        personal_li_2.appendChild(personal_li_2_text);
+        let personal_li_3 = document.createElement("li");
+        let personal_li_3_text = document.createTextNode("Semester: 2/2566");
+        personal_li_3.appendChild(personal_li_3_text);
+
+        personal_ul.appendChild(personal_li_1);
+        personal_ul.appendChild(personal_li_2);
+        personal_ul.appendChild(personal_li_3);
+
+        personal_info_container.appendChild(personal_ul);
+        
+        main_container.appendChild(personal_info_container);
+        var isShow = false;
+        personal_info_text_container.addEventListener("mouseover",function(){
+            personal_info_text_container.style.backgroundColor = "yellow";
+            personal_info_text_container.style.color = "blue";
+            personal_info_text_container.style.cursor = "pointer";
+
+        })
+        personal_info_text_container.addEventListener("mouseout",function(){
+            personal_info_text_container.style.removeProperty("background-color");
+            personal_info_text_container.style.color = "plum";
+        })
+        personal_info_text_container.style.display = "inline-block";
+        personal_info_text_container.style.textDecoration = "underline";
+        personal_info_text_container.style.color = "plum";
+        personal_ul.style.marginTop = 0;
+        personal_ul.style.display = "none";
+        personal_info_text_container.setAttribute("onclick","click_personal(); return false;");
+
+
+        //Snapshots part
+        let snap = document.createElement("h1");
+        let snap_t = document.createTextNode("Snapshots");
+        snap.appendChild(snap_t);
+        snap.style.marginBlockStart = "4px";
+        main_container.appendChild(snap);
+
+
+        let snap_ul = document.createElement("ul");
+        let snap_li_1 = document.createElement("li");
+        let snap_li_2 = document.createElement("li");
+        let snap_li_3 = document.createElement("li");
+        let snap_li_4 = document.createElement("li");
+
+        let snap_li_1_a = document.createElement("a");
+        let snap_li_2_a = document.createElement("a");
+        let snap_li_3_a = document.createElement("a");
+        let snap_li_4_a = document.createElement("a");
+
+
+        let snap_li_1_t = document.createTextNode("Fireworks");
+        let snap_li_2_t = document.createTextNode("Crest");
+        let snap_li_3_t = document.createTextNode("Action");
+        let snap_li_4_t = document.createTextNode("Buffalo");
+
+        snap_li_1_a.appendChild(snap_li_1_t);
+        snap_li_2_a.appendChild(snap_li_2_t);
+        snap_li_3_a.appendChild(snap_li_3_t);
+        snap_li_4_a.appendChild(snap_li_4_t);
+
+        snap_li_1.appendChild(snap_li_1_a);
+        snap_li_2.appendChild(snap_li_2_a);
+        snap_li_3.appendChild(snap_li_3_a);
+        snap_li_4.appendChild(snap_li_4_a);
+
+        snap_ul.appendChild(snap_li_1);
+        snap_ul.appendChild(snap_li_2);
+        snap_ul.appendChild(snap_li_3);
+        snap_ul.appendChild(snap_li_4);
+
+        main_container.appendChild(snap_ul);
+
+        
+        let img_container = document.createElement("img");
+        img_container.setAttribute("src","https://www.ce.kmitl.ac.th/api/main/banner/download/1");
+        main_container.appendChild(img_container);
+        img_container.style.width = "500px";
+
+        
+        snap_li_1_a.setAttribute("href","https://static.foxbusiness.com/foxbusiness.com/content/uploads/2021/06/Fireworks-iStock.jpg");
+        snap_li_2_a.setAttribute("href","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzDFCsgo4kC2WDbQuIicupp3SpAs9SjqyUsg&usqp=CAU");
+        snap_li_3_a.setAttribute("href","https://variety.com/wp-content/uploads/2023/06/MSDCOMM_FE001.jpg?w=800");
+        snap_li_4_a.setAttribute("href","https://i.natgeofe.com/n/de7be89d-3715-4e89-b83b-ab697ef781b8/thumbnail-cape-buffalo-nationalgeographic_1976203_16x9.jpg");
+
+
+        snap_li_1_a.style.color = "blue";
+        snap_li_2_a.style.color = "blue";
+        snap_li_3_a.style.color = "blue";
+        snap_li_4_a.style.color = "blue";
+
+        snap_li_1_a.setAttribute("onclick","load_fireworks(); return false;");
+        snap_li_2_a.setAttribute("onclick","load_crest(); return false;");
+        snap_li_3_a.setAttribute("onclick","load_action(); return false;");
+        snap_li_4_a.setAttribute("onclick","load_buffalo(); return false;");
+
+
+    </script>
+</body>
+
+</html>
